@@ -4,9 +4,9 @@ import PropTypes from "prop-types";
 import { Badge, Box, Flex, Text } from "@chakra-ui/layout";
 import { Image } from "@chakra-ui/image";
 
-import typeToColor from "../../Utils/typeToColor";
+import typeToColor from "utils/typeToColor";
 
-function Card({ name, picture, types }) {
+function Card({ name, picture, types, onClick }) {
   const mapTypes = types.map(({ type }) => type);
 
   const handleTypesToGradient = () => {
@@ -35,6 +35,7 @@ function Card({ name, picture, types }) {
       }}
       padding="3"
       margin="5"
+      onClick={onClick}
     >
       <Flex align="center" direction="column">
         <Text fontSize="4xl" textStyle="paragraph" casing="capitalize">
@@ -60,7 +61,7 @@ function Card({ name, picture, types }) {
 
 Card.propTypes = {
   name: PropTypes.string.isRequired,
-  picture: PropTypes.string.isRequired,
+  picture: PropTypes.string,
   types: PropTypes.arrayOf(
     PropTypes.shape({
       slot: PropTypes.number,
@@ -70,6 +71,7 @@ Card.propTypes = {
       }),
     })
   ),
+  onClick: PropTypes.func,
 };
 
 export default Card;

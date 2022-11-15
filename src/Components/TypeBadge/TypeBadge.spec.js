@@ -1,16 +1,14 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { configure, render, screen } from "@testing-library/react";
-import Card from "./Card";
+import TypeBadge from "./TypeBadge";
 
 configure({ testIdAttribute: "data-test" });
 
-describe("Card - Unit tests", () => {
-  it("should render card with expected props ", () => {
+describe("TypeBadge - Unit tests", () => {
+  it("should render TypeBadge with expected props ", () => {
     render(
       <ChakraProvider>
-        <Card
-          name="Pikachu"
-          picture="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/25.png"
+        <TypeBadge
           types={[
             {
               slot: 1,
@@ -23,6 +21,6 @@ describe("Card - Unit tests", () => {
         />
       </ChakraProvider>
     );
-    expect(screen.getByTestId("card-Pikachu")).toBeInTheDocument();
+    expect(screen.getByTestId("type-badge")).toBeInTheDocument();
   });
 });
